@@ -1,0 +1,289 @@
+/* ==========================================================================
+   Another Office — design tokens
+   ========================================================================== */
+
+:root {
+  --color-red: #d61c1c;        /* sidebar background */
+  --color-red-deep: #ac0808;   /* icon squares / hover */
+  --color-white: white;      /* primary text on red */
+  --color-white-70: rgba(255, 255, 255, 0.7);  /* secondary text */
+  --color-white-20: rgba(255, 255, 255, 0.2);  /* dividers / borders */
+
+  --font-display: "Instrument Serif", "Times New Roman", serif;
+  --font-body: "ROM Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  --sidebar-width: 30vw;
+}
+
+/* ==========================================================================
+   Reset
+   ========================================================================== */
+
+*,
+*::before,
+*::after { 
+  box-sizing: border-box; 
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-white);
+  background: var(--color-red);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul { list-style: none; margin: 0; padding: 0; }
+p { margin: 0; }
+
+/* ==========================================================================
+   ROM Regular — paid Dinamo license, add your own files.
+   Drop woff2/woff into /fonts and uncomment. Falls back to a system
+   grotesque sans in the meantime.
+   ========================================================================== */
+
+/*
+@font-face {
+  font-family: "ROM Regular";
+  src: url("fonts/ROM-Regular.woff2") format("woff2"),
+       url("fonts/ROM-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+*/
+
+/* ==========================================================================
+   Background photo — fixed, full viewport
+   ========================================================================== */
+
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: #8fb9c9; /* sky fallback while you add your own image */
+  background-image: url("images/indie--1.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* ==========================================================================
+   Sidebar
+   ========================================================================== */
+
+h2, p, li, ul, .pill{
+  font-size: 0.75rem;
+}
+
+.sidebar {
+  position: fixed;
+  z-index: 1;
+  container-type: inline-size;
+  container-name: sidebar;
+  width: var(--sidebar-width);
+  max-width: 100vw;
+  height: 80vh;
+  background: var(--color-red);
+  margin:15px;
+  padding: 15px;
+  border-radius:10px;
+  overflow-y: auto;
+  scrollbar-width: none;      /* Firefox */
+  -ms-overflow-style: none;   /* old Edge/IE */
+}
+
+.sidebar::-webkit-scrollbar {
+  display: none;              /* Chrome, Safari, new Edge */
+}
+
+.rule {
+  border: none;
+  border-top: 1px solid var(--color-white-20);
+  margin: 10px 0;
+}
+
+/* ---- Header ---- */
+
+.site-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.5rem, 20.75cqw, 5.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  margin: 0 0 25vh;
+}
+
+.pill-nav {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.pill {
+  flex: 1;
+  text-align: left;
+  display: inline-block;
+  padding: 7px 10px;
+  border: 1px solid var(--color-white-20);
+  border-radius: 7px;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.pill:hover,
+.pill:focus-visible {
+  border-color: var(--color-white);
+  background-color: rgba(246, 236, 226, 0.08);
+}
+
+/* ---- Section labels ---- */
+
+.section-label {
+  font-family: var(--font-body);
+  font-weight: 400;
+  margin: 0;
+}
+
+/* ---- Event list ---- */
+
+.event-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.event {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--color-white-20);
+}
+
+.event:last-child {
+  border-bottom: none;
+}
+
+.event-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.event-date {
+  color: var(--color-white);
+}
+
+.event-link {
+  white-space: nowrap;
+  border-bottom: 1px solid transparent;
+}
+
+.event-link:hover,
+.event-link:focus-visible {
+  border-bottom-color: var(--color-white);
+}
+
+.event-link--sold {
+  text-decoration: line-through;
+  color: var(--color-white-70);
+}
+
+.event-title {
+  color: var(--color-white-70);
+  line-height: 1.4;
+}
+
+.event-sub {
+  color: var(--color-white-70);
+  line-height: 1.4;
+}
+
+/* ---- Footer ---- */
+
+.site-footer {
+  margin-top: 32px;
+}
+
+.footer-line {
+  font-size: 0.78rem;
+  color: var(--color-white-70);
+  line-height: 1.5;
+}
+
+.footer-line--strong {
+  color: var(--color-white);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Social icon stack — fixed to the viewport, over the photo
+   ========================================================================== */
+
+.social-stack {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: var(--color-red);
+  transition: background-color 0.15s ease;
+  border-radius:5px;
+}
+/* 
+.social-icon:hover,
+.social-icon:focus-visible {
+  background: var(--color-red-deep);
+} */
+
+.social-icon svg {
+  width: 18px;
+  height: 18px;
+  color: var(--color-white);
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 760px) {
+  :root {
+    --sidebar-width: 100vw;
+  }
+
+  .bg {
+    position: absolute;
+    height: 60vh;
+    top: 0;
+  }
+
+  .sidebar {
+    min-height: auto;
+    position: relative;
+    margin-top: 50vh;
+    box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .social-stack {
+    top: 16px;
+    bottom: auto;
+    right: 16px;
+  }
+}
