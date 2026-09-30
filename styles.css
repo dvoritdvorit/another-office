@@ -3,14 +3,15 @@
    ========================================================================== */
 
 :root {
-  --color-red: #d61c1c;        /* sidebar background */
+  --color-red: #f20000;        /* sidebar background */
   --color-red-deep: #ac0808;   /* icon squares / hover */
   --color-white: white;      /* primary text on red */
   --color-white-70: rgba(255, 255, 255, 0.7);  /* secondary text */
   --color-white-20: rgba(255, 255, 255, 0.2);  /* dividers / borders */
 
-  --font-display: "Instrument Serif", "Times New Roman", serif;
-  --font-body: "ROM Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+/*  --font-display: "Instrument Serif", "Times New Roman", serif; */
+  --font-display: "ABC Areal", Arial, Helvetica, sans-serif;
+  --font-body: "ABC Areal", Arial, Helvetica, sans-serif;
 
   --sidebar-width: 30vw;
 }
@@ -64,6 +65,18 @@ p { margin: 0; }
 */
 
 /* ==========================================================================
+   ABCA Real Superfamily Variable
+   ========================================================================== */
+
+@font-face {
+  font-family: "ABC Areal";
+  src: url("font/ABCArealSuperfamilyVariable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ==========================================================================
    Background photo — fixed, full viewport
    ========================================================================== */
 
@@ -72,7 +85,7 @@ p { margin: 0; }
   inset: 0;
   z-index: 0;
   background-color: #8fb9c9; /* sky fallback while you add your own image */
-  background-image: url("images/indie--1.jpg");
+  background-image: url("images/credit-card.png");
   background-size: cover;
   background-position: center;
 }
@@ -117,10 +130,17 @@ h2, p, li, ul, .pill{
 .site-title {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(2.5rem, 20.75cqw, 5.5rem);
-  line-height: 0.95;
-  letter-spacing: -0.01em;
+  font-size: 17cqi; /* tune until "Another Office" hits the right edge */
+  line-height: 0.8;
+  letter-spacing: -0.05em;
   margin: 0 0 25vh;
+  width: 100%;          /* fill the pill */
+  max-width: 100%;      /* never exceed the pill */
+}
+
+.site-title span {
+  display: block;
+  white-space: nowrap;
 }
 
 .pill-nav {
